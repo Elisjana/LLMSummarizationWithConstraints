@@ -1,0 +1,11 @@
+----Source Graph Pattern:----
+Node:0 Label:Person
+Node:1 Label:Place
+Edge: A Label:isLocatedInPePl Source:0 Target:1
+---Source Constraints-----
+--------Target Graph Pattern--------
+Node:0_t Label:Organisation
+Node:1 Label:Place
+Edge: A_t Label:isLocatedInOrPl Source:0_t Target:1
+------Target Cons-----
+############# - CONFIDENCE VALUE: 0.8229411764705883 - ######################### - NUMBER OF SOURCE MATCHES: 1700 - ######################### - NUMBER OF TARGET MATCHES: 7955 - ############

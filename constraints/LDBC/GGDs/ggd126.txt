@@ -1,0 +1,13 @@
+----Source Graph Pattern:----
+Node:0 Label:Post
+Node:2 Label:Tag
+Node:1 Label:Tag
+Edge: B Label:hasTagPoTa Source:0 Target:2
+Edge: A Label:hasTagPoTa Source:0 Target:1
+---Source Constraints-----
+--------Target Graph Pattern--------
+Node:0_t Label:Forum
+Node:1 Label:Tag
+Edge: A_t Label:hasTagFoTa Source:0_t Target:1
+------Target Cons-----
+############# - CONFIDENCE VALUE: 0.5868097684384439 - ######################### - NUMBER OF SOURCE MATCHES: 309896 - ######################### - NUMBER OF TARGET MATCHES: 54513 - ############

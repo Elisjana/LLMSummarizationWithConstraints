@@ -1,0 +1,15 @@
+----Source Graph Pattern:----
+Node:2 Label:Comment
+Node:1 Label:Person
+Node:0 Label:Comment
+Edge: B Label:likesPeCo Source:1 Target:2
+Edge: A Label:hasCreatorCoPe Source:0 Target:1
+---Source Constraints-----
+--------Target Graph Pattern--------
+Node:2_t Label:Post
+Node:0_t Label:Forum
+Node:1 Label:Person
+Edge: B_t Label:likesPePo Source:1 Target:2_t
+Edge: A_t Label:hasModeratorFoPe Source:0_t Target:1
+------Target Cons-----
+############# - CONFIDENCE VALUE: 0.99947441510679 - ######################### - NUMBER OF SOURCE MATCHES: 23956168 - ######################### - NUMBER OF TARGET MATCHES: 857240 - ############

@@ -1,0 +1,13 @@
+----Source Graph Pattern:----
+Node:1 Label:Organisation
+Node:0 Label:Person
+Edge: A Label:studyAtPeUn Source:0 Target:1
+---Source Constraints-----
+--------Target Graph Pattern--------
+Node:1_t Label:Tag
+Node:0 Label:Person
+Node:0_t Label:Comment
+Edge: A_t Label:hasTagCoTa Source:0_t Target:1_t
+Edge: B_t Label:hasCreatorCoPe Source:0_t Target:0
+------Target Cons-----
+############# - CONFIDENCE VALUE: 0.9672489082969432 - ######################### - NUMBER OF SOURCE MATCHES: 1374 - ######################### - NUMBER OF TARGET MATCHES: 659666 - ############
