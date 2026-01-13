@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -205,3 +206,24 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+=======
+# sbt / Scala
+target/
+project/target/*
+project/project/*
+project/.boot/*
+project/.sbtboot/
+project/.ivy
+.bsp/
+.metals/
+.ammonite/
+.bloop/
+.history/
+.idea/
+.classpath
+.project
+.settings/
+.DS_Store
+.factorypath
+.sbtopts
+>>>>>>> 5e1394e (Initial commit)
