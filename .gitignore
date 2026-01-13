@@ -3,6 +3,12 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# sbt / bloop build artifacts
+.scala-build/
+.bloop/
+.metals/
+target/
+
 # C extensions
 *.so
 
@@ -224,3 +230,9 @@ project/.ivy
 .DS_Store
 .factorypath
 .sbtopts
+
+# sbt/metals/bloop artifacts
+.scala-build/
+.bloop/
+.metals/
+target/
