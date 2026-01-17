@@ -236,3 +236,10 @@ project/.ivy
 .bloop/
 .metals/
 target/
+
+
+# datasets (keep local)
+datasets/
+*.csv
+*.zip
+datasets/
