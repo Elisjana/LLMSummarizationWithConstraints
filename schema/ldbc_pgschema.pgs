@@ -1,0 +1,184 @@
+CREATE NODE TYPE
+( CommentType : Comment {
+  id            String,
+  creationDate  String,
+  locationIP    String,
+  browserUsed   String,
+  content       String,
+  length        String
+} );
+
+CREATE NODE TYPE
+( ForumType : Forum {
+  id            String,
+  creationDate  String,
+  title         String
+} );
+
+CREATE NODE TYPE
+( OrganisationType : Organisation {
+  id    String,
+  type  String,
+  name  String,
+  url   String
+} );
+
+CREATE NODE TYPE
+( PersonType : Person {
+  id            String,
+  creationDate  String,
+  locationIP    String,
+  browserUsed   String,
+  firstName     String,
+  lastName      String,
+  gender        String,
+  birthday      String
+} );
+
+CREATE NODE TYPE
+( PlaceType : Place {
+  id    String,
+  type  String,
+  name  String,
+  url   String
+} );
+
+CREATE NODE TYPE
+( PostType : Post {
+  id            String,
+  creationDate  String,
+  locationIP    String,
+  browserUsed   String,
+  OPTIONAL content   String,
+  length        String,
+  OPTIONAL language  String,
+  OPTIONAL imageFile String
+} );
+
+CREATE NODE TYPE
+( TagType : Tag {
+  id    String,
+  name  String,
+  url   String
+} );
+
+CREATE NODE TYPE
+( TagClassType : TagClass {
+  id    String,
+  name  String,
+  url   String
+} );
+
+
+CREATE EDGE TYPE
+( : Forum )
+- [ CONTAINER_OF ]
+-> ( : Post );
+
+CREATE EDGE TYPE
+( : Post | Comment )
+- [ HAS_CREATOR ]
+-> ( : Person );
+
+CREATE EDGE TYPE
+( : Person )
+- [ HAS_INTEREST ]
+-> ( : Tag );
+
+CREATE EDGE TYPE
+( : Forum )
+- [ HAS_MEMBER {
+      joinDate String
+  } ]
+-> ( : Person );
+
+CREATE EDGE TYPE
+( : Forum )
+- [ HAS_MODERATOR ]
+-> ( : Person );
+
+CREATE EDGE TYPE
+( : Post | Forum )
+- [ HAS_TAG ]
+-> ( : Tag );
+
+CREATE EDGE TYPE
+( : Tag )
+- [ HAS_TYPE ]
+-> ( : TagClass );
+
+CREATE EDGE TYPE
+( : Organisation | Post | Person )
+- [ IS_LOCATED_IN ]
+-> ( : Place );
+
+CREATE EDGE TYPE
+( : Place )
+- [ IS_PART_OF ]
+-> ( : Place );
+
+CREATE EDGE TYPE
+( : TagClass )
+- [ IS_SUBCLASS_OF ]
+-> ( : TagClass );
+
+CREATE EDGE TYPE
+( : Person )
+- [ KNOWS {
+      creationDate String
+  } ]
+-> ( : Person );
+
+CREATE EDGE TYPE
+( : Person )
+- [ LIKES {
+      creationDate String
+  } ]
+-> ( : Comment | Post );
+
+CREATE EDGE TYPE
+( : Comment )
+- [ REPLY_OF ]
+-> ( : Post | Comment );
+
+CREATE EDGE TYPE
+( : Person )
+- [ STUDIES_AT {
+      classYear String
+  } ]
+-> ( : Organisation );
+
+CREATE EDGE TYPE
+( : Person )
+- [ WORKS_AT {
+      workFrom String
+  } ]
+-> ( : Organisation );
+
+
+CREATE GRAPH TYPE LDBC LOOSE {
+  CommentType,
+  ForumType,
+  OrganisationType,
+  PersonType,
+  PlaceType,
+  PostType,
+  TagType,
+  TagClassType,
+
+  CONTAINER_OF,
+  HAS_CREATOR,
+  HAS_INTEREST,
+  HAS_MEMBER,
+  HAS_MODERATOR,
+  HAS_TAG,
+  HAS_TYPE,
+  IS_LOCATED_IN,
+  IS_PART_OF,
+  IS_SUBCLASS_OF,
+  KNOWS,
+  LIKES,
+  REPLY_OF,
+  STUDIES_AT,
+  WORKS_AT
+};
