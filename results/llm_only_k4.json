@@ -1,0 +1,96 @@
+{
+  "explanation": "LLM grouped schema node labels using only semantic similarity (no constraints). No optimizer/deterministic refinement was applied. Output is normalized into a disjoint cover for comparability.",
+  "k": 4,
+  "ollama_model": "gemma2:2b",
+  "llm_used_for_clustering": true,
+  "llm_used_for_cluster_summaries": true,
+  "llm_summaries_ok": 4,
+  "llm_clustering_explanation": "The clusters are formed based on the general semantic roles of each label. 'Comment', 'Post' and 'Tag' relate to content creation and categorization, while 'Forum', 'Organisation' and 'Person' represent entities or groups involved in a broader context. Finally, 'Place' represents physical locations. This grouping allows for clear differentiation between these distinct categories.",
+  "optimizer_details": {
+    "note": "No constraints / no optimization. Metrics not applicable.",
+    "sizes": [
+      3,
+      3,
+      1,
+      1
+    ]
+  },
+  "groups": [
+    {
+      "id": "G1",
+      "cluster_name": "Community Content and Discussion",
+      "cluster_explanation": "This cluster encompasses schemas related to social interactions, including comments, posts, and tags within a community context.",
+      "unified_label": "SocialContent",
+      "lhs_signatures": [
+        [
+          "Comment",
+          "Post",
+          "Tag"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Comment",
+        "Post",
+        "Tag"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G2",
+      "cluster_name": "People Places Groups in Social Networks",
+      "cluster_explanation": "This cluster represents entities and groups found within social networks like forums, organizations, or communities.",
+      "unified_label": "SocialEntity",
+      "lhs_signatures": [
+        [
+          "Forum",
+          "Organisation",
+          "Person"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Forum",
+        "Organisation",
+        "Person"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G3",
+      "cluster_name": "Places and Discussions",
+      "cluster_explanation": "This cluster encompasses schemas related to physical locations, such as places, organizations, and people's residences, along with discussions about them.",
+      "unified_label": "LocationContent",
+      "lhs_signatures": [
+        [
+          "Place"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Place"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G4",
+      "cluster_name": "Social Tag Clusters",
+      "cluster_explanation": "This cluster represents groups of tags associated with social content, such as comments, posts, and forum discussions.",
+      "unified_label": "SocialTags",
+      "lhs_signatures": [
+        [
+          "TagClass"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "TagClass"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    }
+  ]
+}

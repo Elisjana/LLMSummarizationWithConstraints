@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntity",
+  "cluster_name": "Community Entities",
+  "cluster_explanation": "This cluster represents entities that are part of communities, such as forums, organizations, and people."
+}

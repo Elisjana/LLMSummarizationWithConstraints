@@ -1,0 +1,9 @@
+{
+  "explanation": "The provided GGD evidence suggests clustering based on content and interaction, taxonomy, and context. The hard constraints require distinct clusters for each schema label, with no duplicates or missing labels. This analysis aims to achieve this.",
+  "clusters": [
+    {"id":"G1","labels":["Comment", "Post", "Tag", "Forum"]},
+    {"id":"G2","labels":["Organisation", "Person"]},
+    {"id":"G3","labels":["Place"]},
+    {"id":"G4","labels":["TagClass"]}
+  ]
+}

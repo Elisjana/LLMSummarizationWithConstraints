@@ -1,0 +1,7 @@
+{
+  "explanation": "The provided GGD evidence suggests two distinct clusters based on the frequency of labels. The clustering process leverages the co-occurrence patterns in the GGDs to identify these clusters.",
+  "clusters": [
+    {"id":"G1","labels":["Comment", "Forum", "Organisation", "Person", "Place", "Post", "Tag", "TagClass"]},
+    {"id":"G2","labels":["Tag", "TagClass"] }
+  ]
+}

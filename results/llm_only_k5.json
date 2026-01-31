@@ -1,0 +1,112 @@
+{
+  "explanation": "LLM grouped schema node labels using only semantic similarity (no constraints). No optimizer/deterministic refinement was applied. Output is normalized into a disjoint cover for comparability.",
+  "k": 5,
+  "ollama_model": "gemma2:2b",
+  "llm_used_for_clustering": true,
+  "llm_used_for_cluster_summaries": true,
+  "llm_summaries_ok": 5,
+  "llm_clustering_explanation": "The clusters are formed based on the general semantic roles of the labels. 'Comment', 'Forum' and 'Post' relate to online content and discussion, while 'Organisation', 'Person' and 'Place' represent entities or locations in the real world. 'Tag' and 'TagClass' refer to categorizing elements within a broader context.",
+  "optimizer_details": {
+    "note": "No constraints / no optimization. Metrics not applicable.",
+    "sizes": [
+      1,
+      2,
+      2,
+      2,
+      1
+    ]
+  },
+  "groups": [
+    {
+      "id": "G1",
+      "cluster_name": "Community Discussion",
+      "cluster_explanation": "This cluster encompasses schema nodes related to social interactions and discussions, such as comments, forums, and posts.",
+      "unified_label": "SocialContent",
+      "lhs_signatures": [
+        [
+          "Comment"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Comment"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G2",
+      "cluster_name": "Community Groups",
+      "cluster_explanation": "This cluster encompasses schemas representing communities and groups, such as forums and organizations.",
+      "unified_label": "SocialEntity",
+      "lhs_signatures": [
+        [
+          "Forum",
+          "Organisation"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Forum",
+        "Organisation"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G3",
+      "cluster_name": "People and Places",
+      "cluster_explanation": "This cluster represents entities that are individuals (people) or locations (places).",
+      "unified_label": "SocialEntities",
+      "lhs_signatures": [
+        [
+          "Person",
+          "Place"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Person",
+        "Place"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G4",
+      "cluster_name": "Community Tag Groups",
+      "cluster_explanation": "This cluster represents groups of tags and tag classes used to categorize social content.",
+      "unified_label": "SocialTags",
+      "lhs_signatures": [
+        [
+          "Tag",
+          "TagClass"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Tag",
+        "TagClass"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G5",
+      "cluster_name": "Online Content Discussion",
+      "cluster_explanation": "This cluster represents content posted on online platforms, such as comments, forum discussions, and posts.",
+      "unified_label": "SocialPosts",
+      "lhs_signatures": [
+        [
+          "Post"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Post"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    }
+  ]
+}

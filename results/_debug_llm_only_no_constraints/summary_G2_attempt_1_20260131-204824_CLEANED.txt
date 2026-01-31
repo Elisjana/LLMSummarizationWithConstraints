@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialTopic",
+  "cluster_name": "Community Topics",
+  "cluster_explanation": "This cluster represents topics and discussions found within social platforms." 
+}

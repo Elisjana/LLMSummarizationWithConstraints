@@ -1,0 +1,64 @@
+{
+  "explanation": "LLM grouped schema node labels using only semantic similarity (no constraints). No optimizer/deterministic refinement was applied. Output is normalized into a disjoint cover for comparability.",
+  "k": 2,
+  "ollama_model": "gemma2:2b",
+  "llm_used_for_clustering": true,
+  "llm_used_for_cluster_summaries": true,
+  "llm_summaries_ok": 2,
+  "llm_clustering_explanation": "The clusters are formed based on the general semantic roles of the labels. 'Comment', 'Forum', and 'Post' belong to the cluster focused on online content creation and interaction, while 'Organisation', 'Person', 'Place', and 'Tag' represent entities or concepts that exist outside of this digital realm.",
+  "optimizer_details": {
+    "note": "No constraints / no optimization. Metrics not applicable.",
+    "sizes": [
+      4,
+      4
+    ]
+  },
+  "groups": [
+    {
+      "id": "G1",
+      "cluster_name": "Community Discussions",
+      "cluster_explanation": "This cluster represents content related to social interactions and discussions, including comments, forums, and posts.",
+      "unified_label": "SocialContent",
+      "lhs_signatures": [
+        [
+          "Comment",
+          "Forum",
+          "Post",
+          "Tag"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Comment",
+        "Forum",
+        "Post",
+        "Tag"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G2",
+      "cluster_name": "People Places Groups in Social Networks",
+      "cluster_explanation": "This cluster represents entities found within social networks, such as people, places, and organizations.",
+      "unified_label": "SocialEntity",
+      "lhs_signatures": [
+        [
+          "Organisation",
+          "Person",
+          "Place",
+          "TagClass"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Organisation",
+        "Person",
+        "Place",
+        "TagClass"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    }
+  ]
+}

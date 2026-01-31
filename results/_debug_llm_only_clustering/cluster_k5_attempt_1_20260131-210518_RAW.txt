@@ -1,0 +1,10 @@
+{
+  "explanation": "The provided GGD evidence suggests a clustering structure based on the frequency of labels appearing together in various contexts. By analyzing these co-occurrences, we can identify distinct clusters that capture the underlying semantic relationships between different node labels.",
+  "clusters": [
+    {"id":"G1","labels":["Comment", "Post", "Tag", "Forum", "Person"]},
+    {"id":"G2","labels":["Organisation", "Place", "TagClass"]},
+    {"id":"G3","labels":["Tag", "Forum", "Person"]},
+    {"id":"G4","labels":["Post", "Comment", "Tag", "Organisation", "Place"]},
+    {"id":"G5","labels":["Tag", "Forum", "Person", "Place", "Post"]}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialContent",
+  "cluster_name": "Discussion & Content Sharing",
+  "cluster_explanation": "This cluster encompasses schemas related to social content, including comments and posts." 
+}

@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialPostContent",
+  "cluster_name": "Posts about Social Content",
+  "cluster_explanation": "This cluster represents content related to social media posts, focusing on the interaction of users and their shared experiences." 
+}

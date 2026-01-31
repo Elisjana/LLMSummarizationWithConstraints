@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialTags",
+  "cluster_name": "Content Tags & Classifications",
+  "cluster_explanation": "This cluster represents content tags and classifications based on schema labels, reflecting the nature of social media interactions." 
+}

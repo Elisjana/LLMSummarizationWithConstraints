@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntity",
+  "cluster_name": "People in Social Spaces",
+  "cluster_explanation": "This cluster represents entities that are part of social spaces, such as forums, organizations, and places where people interact." 
+}

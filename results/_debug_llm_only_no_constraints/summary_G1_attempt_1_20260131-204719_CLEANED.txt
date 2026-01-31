@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialContent",
+  "cluster_name": "Community Discussions",
+  "cluster_explanation": "This cluster represents content related to social interactions and discussions, including comments, forums, and posts." 
+}

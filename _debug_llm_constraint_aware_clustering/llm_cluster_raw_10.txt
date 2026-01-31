@@ -1,0 +1,7 @@
+{
+  "explanation": "The provided JSON contains errors. Please review the JSON and ensure that all labels are used only once per cluster.",
+  "clusters": [
+    {"id":"G1", "labels":["Comment", "Forum", "Organisation", "Person", "Place", "Post", "Tag", "TagClass"]},
+    {"id":"G2", "labels":["Comment", "Forum", "Organisation", "Person", "Place", "Post", "Tag", "TagClass"]}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntity",
+  "cluster_name": "People, Places & Organizations",
+  "cluster_explanation": "This cluster represents entities that exist within a social context, such as individuals (Person), locations (Place), and groups (Organisation)."
+}

@@ -1,0 +1,2634 @@
+{
+  "minimal_schema_footprint": {
+    "node_types": [
+      "Comment",
+      "Forum",
+      "Organisation",
+      "Person",
+      "Place",
+      "Post",
+      "Tag"
+    ],
+    "edge_types": [
+      {
+        "label": "CONTAINER_OF",
+        "from": "Forum",
+        "to": "Post"
+      },
+      {
+        "label": "HAS_CREATOR",
+        "from": "Comment",
+        "to": "Person"
+      },
+      {
+        "label": "HAS_CREATOR",
+        "from": "Post",
+        "to": "Person"
+      },
+      {
+        "label": "HAS_INTEREST",
+        "from": "Person",
+        "to": "Tag"
+      },
+      {
+        "label": "HAS_MEMBER",
+        "from": "Forum",
+        "to": "Person"
+      },
+      {
+        "label": "HAS_MODERATOR",
+        "from": "Forum",
+        "to": "Person"
+      },
+      {
+        "label": "HAS_TAG",
+        "from": "Comment",
+        "to": "Tag"
+      },
+      {
+        "label": "HAS_TAG",
+        "from": "Forum",
+        "to": "Tag"
+      },
+      {
+        "label": "HAS_TAG",
+        "from": "Post",
+        "to": "Tag"
+      },
+      {
+        "label": "IS_LOCATED_IN",
+        "from": "Comment",
+        "to": "Place"
+      },
+      {
+        "label": "IS_LOCATED_IN",
+        "from": "Organisation",
+        "to": "Place"
+      },
+      {
+        "label": "IS_LOCATED_IN",
+        "from": "Person",
+        "to": "Place"
+      },
+      {
+        "label": "IS_LOCATED_IN",
+        "from": "Post",
+        "to": "Place"
+      },
+      {
+        "label": "IS_PART_OF",
+        "from": "Place",
+        "to": "Place"
+      },
+      {
+        "label": "KNOWS",
+        "from": "Person",
+        "to": "Person"
+      },
+      {
+        "label": "LIKES",
+        "from": "Person",
+        "to": "Comment"
+      },
+      {
+        "label": "LIKES",
+        "from": "Person",
+        "to": "Post"
+      },
+      {
+        "label": "REPLY_OF",
+        "from": "Comment",
+        "to": "Comment"
+      },
+      {
+        "label": "REPLY_OF",
+        "from": "Comment",
+        "to": "Post"
+      },
+      {
+        "label": "STUDY_AT",
+        "from": "Person",
+        "to": "Organisation"
+      },
+      {
+        "label": "WORK_AT",
+        "from": "Person",
+        "to": "Organisation"
+      }
+    ]
+  },
+  "ollama": {
+    "host": "http://localhost:11434",
+    "model": "gemma2:2b"
+  },
+  "prompts": [
+    {
+      "type": "edge_meanings",
+      "chunk": 1,
+      "prompt": "You write short natural-language meanings for property-graph relations.\n\nHARD RULES:\n- Use ONLY the provided node labels and edge labels.\n- Do NOT invent new labels or properties.\n- Output MUST be ONLY valid JSON (no prose, no markdown).\n- Each meaning MUST be a grammatical English sentence ending with a period.\n- Keep each meaning <= 12 words.\n- Do NOT output patterns like: \"Person WORK_AT Organisation\".\n- Prefer: \"A <verb phrase> a/an <to>\".\n\nReturn JSON in this shape:\n{\n  \"edge_types\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    }\n  ]\n}\n\nStyle examples (follow this style closely):\n{\n  \"examples\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    },\n    {\n      \"label\": \"STUDY_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person studies at an organisation.\"\n    },\n    {\n      \"label\": \"REPLY_OF\",\n      \"from\": \"Comment\",\n      \"to\": \"Post\",\n      \"meaning\": \"Comment replies to a post.\"\n    },\n    {\n      \"label\": \"HAS_INTEREST\",\n      \"from\": \"Person\",\n      \"to\": \"Tag\",\n      \"meaning\": \"Person is interested in a tag.\"\n    }\n  ]\n}\n\nNode labels:\n[\"Comment\", \"Forum\", \"Organisation\", \"Person\", \"Place\", \"Post\", \"Tag\"]\n\nEdge types to describe:\n[{\"label\": \"CONTAINER_OF\", \"from\": \"Forum\", \"to\": \"Post\"}, {\"label\": \"HAS_CREATOR\", \"from\": \"Comment\", \"to\": \"Person\"}, {\"label\": \"HAS_CREATOR\", \"from\": \"Post\", \"to\": \"Person\"}, {\"label\": \"HAS_INTEREST\", \"from\": \"Person\", \"to\": \"Tag\"}, {\"label\": \"HAS_MEMBER\", \"from\": \"Forum\", \"to\": \"Person\"}, {\"label\": \"HAS_MODERATOR\", \"from\": \"Forum\", \"to\": \"Person\"}]\n"
+    },
+    {
+      "type": "edge_meanings",
+      "chunk": 2,
+      "prompt": "You write short natural-language meanings for property-graph relations.\n\nHARD RULES:\n- Use ONLY the provided node labels and edge labels.\n- Do NOT invent new labels or properties.\n- Output MUST be ONLY valid JSON (no prose, no markdown).\n- Each meaning MUST be a grammatical English sentence ending with a period.\n- Keep each meaning <= 12 words.\n- Do NOT output patterns like: \"Person WORK_AT Organisation\".\n- Prefer: \"A <verb phrase> a/an <to>\".\n\nReturn JSON in this shape:\n{\n  \"edge_types\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    }\n  ]\n}\n\nStyle examples (follow this style closely):\n{\n  \"examples\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    },\n    {\n      \"label\": \"STUDY_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person studies at an organisation.\"\n    },\n    {\n      \"label\": \"REPLY_OF\",\n      \"from\": \"Comment\",\n      \"to\": \"Post\",\n      \"meaning\": \"Comment replies to a post.\"\n    },\n    {\n      \"label\": \"HAS_INTEREST\",\n      \"from\": \"Person\",\n      \"to\": \"Tag\",\n      \"meaning\": \"Person is interested in a tag.\"\n    }\n  ]\n}\n\nNode labels:\n[\"Comment\", \"Forum\", \"Organisation\", \"Person\", \"Place\", \"Post\", \"Tag\"]\n\nEdge types to describe:\n[{\"label\": \"HAS_TAG\", \"from\": \"Comment\", \"to\": \"Tag\"}, {\"label\": \"HAS_TAG\", \"from\": \"Forum\", \"to\": \"Tag\"}, {\"label\": \"HAS_TAG\", \"from\": \"Post\", \"to\": \"Tag\"}, {\"label\": \"IS_LOCATED_IN\", \"from\": \"Comment\", \"to\": \"Place\"}, {\"label\": \"IS_LOCATED_IN\", \"from\": \"Organisation\", \"to\": \"Place\"}, {\"label\": \"IS_LOCATED_IN\", \"from\": \"Person\", \"to\": \"Place\"}]\n"
+    },
+    {
+      "type": "edge_meanings",
+      "chunk": 3,
+      "prompt": "You write short natural-language meanings for property-graph relations.\n\nHARD RULES:\n- Use ONLY the provided node labels and edge labels.\n- Do NOT invent new labels or properties.\n- Output MUST be ONLY valid JSON (no prose, no markdown).\n- Each meaning MUST be a grammatical English sentence ending with a period.\n- Keep each meaning <= 12 words.\n- Do NOT output patterns like: \"Person WORK_AT Organisation\".\n- Prefer: \"A <verb phrase> a/an <to>\".\n\nReturn JSON in this shape:\n{\n  \"edge_types\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    }\n  ]\n}\n\nStyle examples (follow this style closely):\n{\n  \"examples\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    },\n    {\n      \"label\": \"STUDY_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person studies at an organisation.\"\n    },\n    {\n      \"label\": \"REPLY_OF\",\n      \"from\": \"Comment\",\n      \"to\": \"Post\",\n      \"meaning\": \"Comment replies to a post.\"\n    },\n    {\n      \"label\": \"HAS_INTEREST\",\n      \"from\": \"Person\",\n      \"to\": \"Tag\",\n      \"meaning\": \"Person is interested in a tag.\"\n    }\n  ]\n}\n\nNode labels:\n[\"Comment\", \"Forum\", \"Organisation\", \"Person\", \"Place\", \"Post\", \"Tag\"]\n\nEdge types to describe:\n[{\"label\": \"IS_LOCATED_IN\", \"from\": \"Post\", \"to\": \"Place\"}, {\"label\": \"IS_PART_OF\", \"from\": \"Place\", \"to\": \"Place\"}, {\"label\": \"KNOWS\", \"from\": \"Person\", \"to\": \"Person\"}, {\"label\": \"LIKES\", \"from\": \"Person\", \"to\": \"Comment\"}, {\"label\": \"LIKES\", \"from\": \"Person\", \"to\": \"Post\"}, {\"label\": \"REPLY_OF\", \"from\": \"Comment\", \"to\": \"Comment\"}]\n"
+    },
+    {
+      "type": "edge_meanings",
+      "chunk": 4,
+      "prompt": "You write short natural-language meanings for property-graph relations.\n\nHARD RULES:\n- Use ONLY the provided node labels and edge labels.\n- Do NOT invent new labels or properties.\n- Output MUST be ONLY valid JSON (no prose, no markdown).\n- Each meaning MUST be a grammatical English sentence ending with a period.\n- Keep each meaning <= 12 words.\n- Do NOT output patterns like: \"Person WORK_AT Organisation\".\n- Prefer: \"A <verb phrase> a/an <to>\".\n\nReturn JSON in this shape:\n{\n  \"edge_types\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    }\n  ]\n}\n\nStyle examples (follow this style closely):\n{\n  \"examples\": [\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person works at an organisation.\"\n    },\n    {\n      \"label\": \"STUDY_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"Person studies at an organisation.\"\n    },\n    {\n      \"label\": \"REPLY_OF\",\n      \"from\": \"Comment\",\n      \"to\": \"Post\",\n      \"meaning\": \"Comment replies to a post.\"\n    },\n    {\n      \"label\": \"HAS_INTEREST\",\n      \"from\": \"Person\",\n      \"to\": \"Tag\",\n      \"meaning\": \"Person is interested in a tag.\"\n    }\n  ]\n}\n\nNode labels:\n[\"Comment\", \"Forum\", \"Organisation\", \"Person\", \"Place\", \"Post\", \"Tag\"]\n\nEdge types to describe:\n[{\"label\": \"REPLY_OF\", \"from\": \"Comment\", \"to\": \"Post\"}, {\"label\": \"STUDY_AT\", \"from\": \"Person\", \"to\": \"Organisation\"}, {\"label\": \"WORK_AT\", \"from\": \"Person\", \"to\": \"Organisation\"}]\n"
+    },
+    {
+      "type": "schema_text",
+      "prompt": "You are a property-graph schema summarization assistant.\n\nSTRICT RULES:\n- Use ONLY the given node labels and edge labels.\n- Do NOT invent new labels or properties.\n- Output MUST be ONLY valid JSON (no markdown).\n\nReturn JSON in this shape:\n{\n  \"schema_summary_text\": \"one paragraph, max 120 words\"\n}\n\nNode labels:\n[\"Comment\", \"Forum\", \"Organisation\", \"Person\", \"Place\", \"Post\", \"Tag\"]\n\nEdge types (authoritative, with meanings):\n[{\"label\": \"CONTAINER_OF\", \"from\": \"Forum\", \"to\": \"Post\", \"meaning\": \"Forum CONTAINER_OF Post\"}, {\"label\": \"HAS_CREATOR\", \"from\": \"Comment\", \"to\": \"Person\", \"meaning\": \"Comment HAS_CREATOR Person\"}, {\"label\": \"HAS_CREATOR\", \"from\": \"Post\", \"to\": \"Person\", \"meaning\": \"Post HAS_CREATOR Person\"}, {\"label\": \"HAS_INTEREST\", \"from\": \"Person\", \"to\": \"Tag\", \"meaning\": \"Person HAS_INTEREST Tag\"}, {\"label\": \"HAS_MEMBER\", \"from\": \"Forum\", \"to\": \"Person\", \"meaning\": \"Forum HAS_MEMBER Person\"}, {\"label\": \"HAS_MODERATOR\", \"from\": \"Forum\", \"to\": \"Person\", \"meaning\": \"Forum HAS_MODERATOR Person\"}, {\"label\": \"HAS_TAG\", \"from\": \"Comment\", \"to\": \"Tag\", \"meaning\": \"Comment HAS_TAG Tag\"}, {\"label\": \"HAS_TAG\", \"from\": \"Forum\", \"to\": \"Tag\", \"meaning\": \"Forum HAS_TAG Tag\"}, {\"label\": \"HAS_TAG\", \"from\": \"Post\", \"to\": \"Tag\", \"meaning\": \"Post HAS_TAG Tag\"}, {\"label\": \"IS_LOCATED_IN\", \"from\": \"Comment\", \"to\": \"Place\", \"meaning\": \"Comment IS_LOCATED_IN Place\"}, {\"label\": \"IS_LOCATED_IN\", \"from\": \"Organisation\", \"to\": \"Place\", \"meaning\": \"Organisation IS_LOCATED_IN Place\"}, {\"label\": \"IS_LOCATED_IN\", \"from\": \"Person\", \"to\": \"Place\", \"meaning\": \"Person IS_LOCATED_IN Place\"}, {\"label\": \"IS_LOCATED_IN\", \"from\": \"Post\", \"to\": \"Place\", \"meaning\": \"Post IS_LOCATED_IN Place\"}, {\"label\": \"IS_PART_OF\", \"from\": \"Place\", \"to\": \"Place\", \"meaning\": \"Place IS_PART_OF Place\"}, {\"label\": \"KNOWS\", \"from\": \"Person\", \"to\": \"Person\", \"meaning\": \"Person KNOWS Person\"}, {\"label\": \"LIKES\", \"from\": \"Person\", \"to\": \"Comment\", \"meaning\": \"Person LIKES Comment\"}, {\"label\": \"LIKES\", \"from\": \"Person\", \"to\": \"Post\", \"meaning\": \"Person LIKES Post\"}, {\"label\": \"REPLY_OF\", \"from\": \"Comment\", \"to\": \"Comment\", \"meaning\": \"Comment REPLY_OF Comment\"}, {\"label\": \"REPLY_OF\", \"from\": \"Comment\", \"to\": \"Post\", \"meaning\": \"A comment replies to a post.\"}, {\"label\": \"STUDY_AT\", \"from\": \"Person\", \"to\": \"Organisation\", \"meaning\": \"A person studies at an organisation.\"}, {\"label\": \"WORK_AT\", \"from\": \"Person\", \"to\": \"Organisation\", \"meaning\": \"A person works at an organisation.\"}]\n"
+    }
+  ],
+  "raw_outputs": [
+    {
+      "type": "edge_meanings",
+      "chunk": 1,
+      "text": "{\n  \"edge_types\": [\n    {\n      \"label\": \"CONTAINER_OF\",\n      \"from\": \"Forum\",\n      \"to\": \"Post\",\n      \"meaning\": \"A forum contains a post.\"\n    },\n    {\n      \"label\": \"HAS_CREATOR\",\n      \"from\": \"Comment\",\n      \"to\": \"Person\",\n      \"meaning\": \"A comment is created by a person.\"\n    },\n    {\n      \"label\": \"HAS_CREATOR\",\n      \"from\": \"Post\",\n      \"to\": \"Person\",\n      \"meaning\": \"A post is created by a person.\"\n    },\n    {\n      \"label\": \"HAS_INTEREST\",\n      \"from\": \"Person\",\n      \"to\": \"Tag\",\n      \"meaning\": \"A person has an interest in a tag.\"\n    },\n    {\n      \"label\": \"HAS_MEMBER\",\n      \"from\": \"Forum\",\n      \"to\":"
+    },
+    {
+      "type": "edge_meanings_retry",
+      "chunk": 1,
+      "text": "{\n  \"edge_types\": [\n    {\n      \"label\": \"CONTAINER_OF\",\n      \"from\": \"Forum\",\n      \"to\": \"Post\",\n      \"meaning\": \"Forum contains posts.\"\n    },\n    {\n      \"label\": \"HAS_CREATOR\",\n      \"from\": \"Comment\",\n      \"to\": \"Person\",\n      \"meaning\": \"Comment is created by a person.\"\n    },\n    {\n      \"label\": \"HAS_CREATOR\",\n      \"from\": \"Post\",\n      \"to\": \"Person\",\n      \"meaning\": \"Post is created by a person.\"\n    },\n    {\n      \"label\": \"HAS_INTEREST\",\n      \"from\": \"Person\",\n      \"to\": \"Tag\",\n      \"meaning\": \"Person has interest in a tag.\"\n    },\n    {\n      \"label\": \"HAS_MEMBER\",\n      \"from\": \"Forum\",\n      \"to\": \"Person\",\n      \""
+    },
+    {
+      "type": "edge_meanings",
+      "chunk": 2,
+      "text": "{\n  \"edge_types\": [\n    {\n      \"label\": \"HAS_TAG\",\n      \"from\": \"Comment\",\n      \"to\": \"Tag\",\n      \"meaning\": \"A comment has a tag.\"\n    },\n    {\n      \"label\": \"HAS_TAG\",\n      \"from\": \"Forum\",\n      \"to\": \"Tag\",\n      \"meaning\": \"A forum has a tag.\"\n    },\n    {\n      \"label\": \"HAS_TAG\",\n      \"from\": \"Post\",\n      \"to\": \"Tag\",\n      \"meaning\": \"A post has a tag.\"\n    },\n    {\n      \"label\": \"IS_LOCATED_IN\",\n      \"from\": \"Comment\",\n      \"to\": \"Place\",\n      \"meaning\": \"A comment is located in a place.\"\n    },\n    {\n      \"label\": \"IS_LOCATED_IN\",\n      \"from\": \"Organisation\",\n      \"to\": \""
+    },
+    {
+      "type": "edge_meanings_retry",
+      "chunk": 2,
+      "text": "{\n  \"edge_types\": [\n    {\n      \"label\": \"HAS_TAG\",\n      \"from\": \"Comment\",\n      \"to\": \"Tag\",\n      \"meaning\": \"A comment has a tag.\"\n    },\n    {\n      \"label\": \"HAS_TAG\",\n      \"from\": \"Forum\",\n      \"to\": \"Tag\",\n      \"meaning\": \"A forum has a tag.\"\n    },\n    {\n      \"label\": \"HAS_TAG\",\n      \"from\": \"Post\",\n      \"to\": \"Tag\",\n      \"meaning\": \"A post has a tag.\"\n    },\n    {\n      \"label\": \"IS_LOCATED_IN\",\n      \"from\": \"Comment\",\n      \"to\": \"Place\",\n      \"meaning\": \"A comment is located in a place.\"\n    },\n    {\n      \"label\": \"IS_LOCATED_IN\",\n      \"from\": \"Organisation\",\n      \"to\": \""
+    },
+    {
+      "type": "edge_meanings",
+      "chunk": 3,
+      "text": "{\n  \"edge_types\": [\n    {\n      \"label\": \"IS_LOCATED_IN\",\n      \"from\": \"Post\",\n      \"to\": \"Place\",\n      \"meaning\": \"A post is located in a place.\"\n    },\n    {\n      \"label\": \"IS_PART_OF\",\n      \"from\": \"Place\",\n      \"to\": \"Place\",\n      \"meaning\": \"A place is part of another place.\"\n    },\n    {\n      \"label\": \"KNOWS\",\n      \"from\": \"Person\",\n      \"to\": \"Person\",\n      \"meaning\": \"People know each other.\"\n    },\n    {\n      \"label\": \"LIKES\",\n      \"from\": \"Person\",\n      \"to\": \"Comment\",\n      \"meaning\": \"A person likes a comment.\"\n    },\n    {\n      \"label\": \"LIKES\",\n      \"from\": \"Person\",\n      \"to\": \"Post\","
+    },
+    {
+      "type": "edge_meanings_retry",
+      "chunk": 3,
+      "text": "{\n  \"edge_types\": [\n    {\n      \"label\": \"IS_LOCATED_IN\",\n      \"from\": \"Post\",\n      \"to\": \"Place\",\n      \"meaning\": \"A post is located in a place.\"\n    },\n    {\n      \"label\": \"IS_PART_OF\",\n      \"from\": \"Place\",\n      \"to\": \"Place\",\n      \"meaning\": \"A place is part of another place.\"\n    },\n    {\n      \"label\": \"KNOWS\",\n      \"from\": \"Person\",\n      \"to\": \"Person\",\n      \"meaning\": \"People know each other.\"\n    },\n    {\n      \"label\": \"LIKES\",\n      \"from\": \"Person\",\n      \"to\": \"Comment\",\n      \"meaning\": \"A person likes a comment.\"\n    },\n    {\n      \"label\": \"LIKES\",\n      \"from\": \"Person\",\n      \"to\": \"Post\","
+    },
+    {
+      "type": "edge_meanings",
+      "chunk": 4,
+      "text": "{\n  \"edge_types\": [\n    {\n      \"label\": \"REPLY_OF\",\n      \"from\": \"Comment\",\n      \"to\": \"Post\",\n      \"meaning\": \"A comment replies to a post.\"\n    },\n    {\n      \"label\": \"STUDY_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"A person studies at an organisation.\"\n    },\n    {\n      \"label\": \"WORK_AT\",\n      \"from\": \"Person\",\n      \"to\": \"Organisation\",\n      \"meaning\": \"A person works at an organisation.\"\n    }\n  ]\n}"
+    },
+    {
+      "type": "schema_text",
+      "text": "{\n  \"schema_summary_text\": \"This schema describes a property graph representing social interactions and information sharing. Nodes represent entities like 'Comment', 'Forum', 'Person', or 'Place'. Edges connect these nodes, indicating relationships such as 'CONTAINER_OF' (a forum contains posts), 'HAS_CREATOR' (comments are created by people), 'HAS_INTEREST' (people have interests in tags), and 'IS_LOCATED_IN' (places can be located within other places). The schema also captures connections like 'KNOWS', 'LIKES', and 'REPLY_OF' to represent social interactions, knowledge sharing, and responses.\"\n}"
+    }
+  ],
+  "final_compact_output": {
+    "schema_summary": {
+      "node_types": [
+        "Comment",
+        "Forum",
+        "Organisation",
+        "Person",
+        "Place",
+        "Post",
+        "Tag"
+      ],
+      "edge_types": [
+        {
+          "label": "CONTAINER_OF",
+          "from": "Forum",
+          "to": "Post",
+          "meaning": "Forum CONTAINER_OF Post"
+        },
+        {
+          "label": "HAS_CREATOR",
+          "from": "Comment",
+          "to": "Person",
+          "meaning": "Comment HAS_CREATOR Person"
+        },
+        {
+          "label": "HAS_CREATOR",
+          "from": "Post",
+          "to": "Person",
+          "meaning": "Post HAS_CREATOR Person"
+        },
+        {
+          "label": "HAS_INTEREST",
+          "from": "Person",
+          "to": "Tag",
+          "meaning": "Person HAS_INTEREST Tag"
+        },
+        {
+          "label": "HAS_MEMBER",
+          "from": "Forum",
+          "to": "Person",
+          "meaning": "Forum HAS_MEMBER Person"
+        },
+        {
+          "label": "HAS_MODERATOR",
+          "from": "Forum",
+          "to": "Person",
+          "meaning": "Forum HAS_MODERATOR Person"
+        },
+        {
+          "label": "HAS_TAG",
+          "from": "Comment",
+          "to": "Tag",
+          "meaning": "Comment HAS_TAG Tag"
+        },
+        {
+          "label": "HAS_TAG",
+          "from": "Forum",
+          "to": "Tag",
+          "meaning": "Forum HAS_TAG Tag"
+        },
+        {
+          "label": "HAS_TAG",
+          "from": "Post",
+          "to": "Tag",
+          "meaning": "Post HAS_TAG Tag"
+        },
+        {
+          "label": "IS_LOCATED_IN",
+          "from": "Comment",
+          "to": "Place",
+          "meaning": "Comment IS_LOCATED_IN Place"
+        },
+        {
+          "label": "IS_LOCATED_IN",
+          "from": "Organisation",
+          "to": "Place",
+          "meaning": "Organisation IS_LOCATED_IN Place"
+        },
+        {
+          "label": "IS_LOCATED_IN",
+          "from": "Person",
+          "to": "Place",
+          "meaning": "Person IS_LOCATED_IN Place"
+        },
+        {
+          "label": "IS_LOCATED_IN",
+          "from": "Post",
+          "to": "Place",
+          "meaning": "Post IS_LOCATED_IN Place"
+        },
+        {
+          "label": "IS_PART_OF",
+          "from": "Place",
+          "to": "Place",
+          "meaning": "Place IS_PART_OF Place"
+        },
+        {
+          "label": "KNOWS",
+          "from": "Person",
+          "to": "Person",
+          "meaning": "Person KNOWS Person"
+        },
+        {
+          "label": "LIKES",
+          "from": "Person",
+          "to": "Comment",
+          "meaning": "Person LIKES Comment"
+        },
+        {
+          "label": "LIKES",
+          "from": "Person",
+          "to": "Post",
+          "meaning": "Person LIKES Post"
+        },
+        {
+          "label": "REPLY_OF",
+          "from": "Comment",
+          "to": "Comment",
+          "meaning": "Comment REPLY_OF Comment"
+        },
+        {
+          "label": "REPLY_OF",
+          "from": "Comment",
+          "to": "Post",
+          "meaning": "A comment replies to a post."
+        },
+        {
+          "label": "STUDY_AT",
+          "from": "Person",
+          "to": "Organisation",
+          "meaning": "A person studies at an organisation."
+        },
+        {
+          "label": "WORK_AT",
+          "from": "Person",
+          "to": "Organisation",
+          "meaning": "A person works at an organisation."
+        }
+      ],
+      "schema_summary_text": "This schema describes a property graph representing social interactions and information sharing. Nodes represent entities like 'Comment', 'Forum', 'Person', or 'Place'. Edges connect these nodes, indicating relationships such as 'CONTAINER_OF' (a forum contains posts), 'HAS_CREATOR' (comments are created by people), 'HAS_INTEREST' (people have interests in tags), and 'IS_LOCATED_IN' (places can be located within other places). The schema also captures connections like 'KNOWS', 'LIKES', and 'REPLY_OF' to represent social interactions, knowledge sharing, and responses."
+    },
+    "constraint_preservation": {
+      "coverage": {
+        "ggds_total": 221,
+        "ggds_preserved": 221
+      },
+      "preservation_style": "canonical_signatures",
+      "preserved_rules": [
+        {
+          "id": "GGD_0001",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0002",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0003",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0004",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0005",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0006",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0007",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0008",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0009",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0010",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0011",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "REPLY_OF(Comment->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0012",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0013",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0014",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0015",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0016",
+          "lhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0017",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0018",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0019",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0020",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0021",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0022",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0023",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0024",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0025",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)",
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0026",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0027",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0028",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0029",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0030",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0031",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0032",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0033",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0034",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0035",
+          "lhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0036",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0037",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0038",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0039",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0040",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0041",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0042",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0043",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0044",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0045",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0046",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0047",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0048",
+          "lhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0049",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0050",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0051",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0052",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0053",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0054",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0055",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0056",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0057",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0058",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0059",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0060",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0061",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0062",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0063",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0064",
+          "lhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0065",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0066",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0067",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0068",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0069",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0070",
+          "lhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0071",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0072",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0073",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0074",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0075",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0076",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0077",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0078",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0079",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0080",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0081",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0082",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0083",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0084",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "HAS_TAG(Comment->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0085",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0086",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0087",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0088",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0089",
+          "lhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0090",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0091",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0092",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0093",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0094",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0095",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0096",
+          "lhs": [
+            "IS_LOCATED_IN(Post->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0097",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "REPLY_OF(Comment->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0098",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0099",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0100",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "STUDY_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0101",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0102",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0103",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "HAS_TAG(Comment->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0104",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0105",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0106",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)",
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0107",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0108",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0109",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0110",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0111",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0112",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0113",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0114",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0115",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0116",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0117",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0118",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0119",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0120",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0121",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0122",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0123",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0124",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0125",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0126",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0127",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0128",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0129",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0130",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0131",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0132",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0133",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0134",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0135",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0136",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0137",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0138",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0139",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0140",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0141",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0142",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0143",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0144",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0145",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0146",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0147",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0148",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0149",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0150",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0151",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0152",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0153",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0154",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0155",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0156",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Comment->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0157",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0158",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0159",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0160",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0161",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0162",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "IS_LOCATED_IN(Organisation->Place)"
+          ]
+        },
+        {
+          "id": "GGD_0163",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0164",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0165",
+          "lhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0166",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0167",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0168",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0169",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "IS_LOCATED_IN(Comment->Place)"
+          ]
+        },
+        {
+          "id": "GGD_0170",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0171",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0172",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0173",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "IS_LOCATED_IN(Post->Place)"
+          ]
+        },
+        {
+          "id": "GGD_0174",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0175",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0176",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0177",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0178",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0179",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0180",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0181",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0182",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0183",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0184",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0185",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)",
+            "HAS_MODERATOR(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0186",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0187",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_TAG(Forum->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0188",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0189",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "HAS_TAG(Comment->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0190",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0191",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "IS_LOCATED_IN(Organisation->Place)"
+          ]
+        },
+        {
+          "id": "GGD_0192",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "WORK_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0193",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0194",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0195",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "HAS_MEMBER(Forum->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0196",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Comment->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0197",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_TAG(Post->Tag)",
+            "REPLY_OF(Comment->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0198",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "IS_LOCATED_IN(Post->Place)"
+          ]
+        },
+        {
+          "id": "GGD_0199",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0200",
+          "lhs": [
+            "IS_PART_OF(Place->Place)"
+          ],
+          "rhs": [
+            "IS_LOCATED_IN(Organisation->Place)"
+          ]
+        },
+        {
+          "id": "GGD_0201",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0202",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0203",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0204",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0205",
+          "lhs": [
+            "IS_LOCATED_IN(Person->Place)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0206",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0207",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0208",
+          "lhs": [
+            "HAS_TAG(Post->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0209",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "STUDY_AT(Person->Organisation)"
+          ]
+        },
+        {
+          "id": "GGD_0210",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "LIKES(Person->Comment)"
+          ],
+          "rhs": [
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0211",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0212",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0213",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_INTEREST(Person->Tag)",
+            "LIKES(Person->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0214",
+          "lhs": [
+            "HAS_MEMBER(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ],
+          "rhs": [
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0215",
+          "lhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_TAG(Post->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0216",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "LIKES(Person->Post)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0217",
+          "lhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Post)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Post->Person)",
+            "HAS_INTEREST(Person->Tag)"
+          ]
+        },
+        {
+          "id": "GGD_0218",
+          "lhs": [
+            "HAS_TAG(Comment->Tag)",
+            "REPLY_OF(Comment->Comment)"
+          ],
+          "rhs": [
+            "HAS_CREATOR(Comment->Person)",
+            "REPLY_OF(Comment->Comment)"
+          ]
+        },
+        {
+          "id": "GGD_0219",
+          "lhs": [
+            "STUDY_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "KNOWS(Person->Person)"
+          ]
+        },
+        {
+          "id": "GGD_0220",
+          "lhs": [
+            "IS_LOCATED_IN(Post->Place)"
+          ],
+          "rhs": [
+            "CONTAINER_OF(Forum->Post)"
+          ]
+        },
+        {
+          "id": "GGD_0221",
+          "lhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "WORK_AT(Person->Organisation)"
+          ],
+          "rhs": [
+            "HAS_MODERATOR(Forum->Person)",
+            "HAS_TAG(Forum->Tag)"
+          ]
+        }
+      ]
+    }
+  }
+}

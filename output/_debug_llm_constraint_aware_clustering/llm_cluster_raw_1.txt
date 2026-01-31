@@ -1,0 +1,9 @@
+{
+  "explanation": "The provided GGD evidence suggests clustering based on content and interaction, taxonomy, and context. The hard constraints require each label to appear in exactly one cluster, resulting in five distinct clusters.",
+  "clusters": [
+    {"id":"G1","labels":["Comment", "Post", "Tag", "Forum", "Organisation"]},
+    {"id":"G2","labels":["Person", "Place", "TagClass"]},
+    {"id":"G3","labels":["Tag", "Forum", "Post"]},
+    {"id":"G4","labels":["Organisation", "Comment", "Place"]},
+    {"id":"G5","labels":["TagClass", "Person", "Post"]}] 
+}

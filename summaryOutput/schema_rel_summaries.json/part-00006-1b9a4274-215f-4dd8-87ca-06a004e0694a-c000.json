@@ -1,0 +1,1 @@
+{"relLabel":"IS_PART_OF","fromLabel":"Place","toLabel":"Place","properties":[],"constraint_tags":["GGD(GGD_0200)"],"schema_summary":"RelType IS_PART_OF: Place -> Place. Properties: (none). Used in constraints: GGD(GGD_0200)"}

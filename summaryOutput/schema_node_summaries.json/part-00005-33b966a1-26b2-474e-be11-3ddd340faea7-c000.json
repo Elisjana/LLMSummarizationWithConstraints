@@ -1,0 +1,1 @@
+{"label":"Place","properties":["id","name","type","url"],"constraint_tags":["GGD(GGD_0162)","GGD(GGD_0200)"],"schema_summary":"NodeType Place with properties: id, name, type, url. Used in constraints: GGD(GGD_0162), GGD(GGD_0200)"}

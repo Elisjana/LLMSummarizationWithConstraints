@@ -1,0 +1,7 @@
+{
+  "explanation": "The provided JSON contains errors. The duplicate labels assigned to multiple clusters need to be fixed.",
+  "clusters": [
+    {"id":"G1", "labels":["Comment", "Forum", "Organisation", "Person", "Place", "Post", "Tag", "TagClass"]},
+    {"id":"G2", "labels":["Comment", "Forum", "Organisation", "Person", "Place", "Post", "Tag", "TagClass"]}
+  ]
+}

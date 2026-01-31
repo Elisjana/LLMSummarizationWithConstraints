@@ -1,0 +1,7 @@
+{
+  "explanation": "The provided GGD evidence suggests two distinct clusters based on the frequency of labels. One cluster focuses on content and interaction (e.g., Comment, Forum, Post, Tag), while the other emphasizes organizational context (e.g., Organisation, Place).",
+  "clusters": [
+    {"id":"G1","labels":["Comment","Forum","Post","Tag"]},
+    {"id":"G2","labels":["Organisation","Place"]}
+  ]
+}

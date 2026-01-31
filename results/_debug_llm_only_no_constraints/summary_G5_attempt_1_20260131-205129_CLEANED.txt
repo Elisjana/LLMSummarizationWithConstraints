@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialPosts",
+  "cluster_name": "Online Content Discussion",
+  "cluster_explanation": "This cluster represents content posted on online platforms, such as comments, forum discussions, and posts." 
+}

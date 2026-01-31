@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntity",
+  "cluster_name": "People and Groups in Social Spaces",
+  "cluster_explanation": "This cluster represents entities that are part of social spaces, such as people or groups, based on the provided schema labels." 
+}

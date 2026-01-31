@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialTag",
+  "cluster_name": "Tags Associated with Social Content",
+  "cluster_explanation": "This cluster represents labels related to social content, such as tags and classes that describe the nature of posts or comments." 
+}

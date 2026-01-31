@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialContent",
+  "cluster_name": "Online Communities and Discussions",
+  "cluster_explanation": "This cluster represents nodes related to online communities, forums, and discussions where users share information and engage in social interactions." 
+}

@@ -1,0 +1,80 @@
+{
+  "explanation": "LLM grouped schema node labels using only semantic similarity (no constraints). No optimizer/deterministic refinement was applied. Output is normalized into a disjoint cover for comparability.",
+  "k": 3,
+  "ollama_model": "gemma2:2b",
+  "llm_used_for_clustering": true,
+  "llm_used_for_cluster_summaries": true,
+  "llm_summaries_ok": 3,
+  "llm_clustering_explanation": "The clusters are formed based on the general semantic roles these labels represent. 'Comment' and 'Post' relate to content creation, while 'Forum' and 'Tag' connect to online discussion and categorization. 'Organisation', 'Person', and 'Place' belong to entities or locations in the real world.",
+  "optimizer_details": {
+    "note": "No constraints / no optimization. Metrics not applicable.",
+    "sizes": [
+      2,
+      3,
+      3
+    ]
+  },
+  "groups": [
+    {
+      "id": "G1",
+      "cluster_name": "Discussion Content Sharing",
+      "cluster_explanation": "This cluster encompasses schemas related to social content, including comments and posts.",
+      "unified_label": "SocialContent",
+      "lhs_signatures": [
+        [
+          "Comment",
+          "Post"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Comment",
+        "Post"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G2",
+      "cluster_name": "Community Topics",
+      "cluster_explanation": "This cluster represents topics and discussions found within social platforms.",
+      "unified_label": "SocialTopic",
+      "lhs_signatures": [
+        [
+          "Forum",
+          "Tag",
+          "TagClass"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Forum",
+        "Tag",
+        "TagClass"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    },
+    {
+      "id": "G3",
+      "cluster_name": "People Places Organizations",
+      "cluster_explanation": "This cluster represents entities that exist within a social context, such as individuals (Person), locations (Place), and groups (Organisation).",
+      "unified_label": "SocialEntity",
+      "lhs_signatures": [
+        [
+          "Organisation",
+          "Person",
+          "Place"
+        ]
+      ],
+      "rhs_needed_labels": [],
+      "node_labels_for_local_check": [
+        "Organisation",
+        "Person",
+        "Place"
+      ],
+      "preserved_ggds": [],
+      "fully_local_ggds": []
+    }
+  ]
+}

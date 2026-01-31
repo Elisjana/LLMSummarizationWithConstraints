@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntity",
+  "cluster_name": "Community and Location",
+  "cluster_explanation": "This cluster represents entities related to social communities and their geographical locations, based on the provided schema labels."
+}

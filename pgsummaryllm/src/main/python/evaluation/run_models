@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+Ks=(2 3 4 5)
+
+mkdir -p results/llm_only results/llm_constraints results/llm_constraints_opt
+
+for K in "${Ks[@]}"; do
+  echo "=== Running LLM-only for K=$K ==="
+  python3 pgsummaryllm/src/main/python/llm/llm_grouping.py \
+    --schema schema.json \
+    --constraints JsonOutput/ldbc/v1/constraints.jsonl \
+    --k "$K" \
+    --out "results/llm_only/k=${K}.json" \
+    --ollama_host http://localhost:11434 \
+    --ollama_model gemma2:2b \
+    --cluster_temperature 0.0 \
+    --cluster_tries 15 \
+    --summary_temperature 0.0 \
+    --cluster_num_predict 6000
+
+  echo "=== Running LLM+constraints for K=$K ==="
+  python3 pgsummaryllm/src/main/python/llm/llm_grouping.py \
+    --schema schema.json \
+    --constraints JsonOutput/ldbc/v1/constraints.jsonl \
+    --k "$K" \
+    --out "results/llm_constraints/k=${K}.json" \
+    --ollama_host http://localhost:11434 \
+    --ollama_model gemma2:2b \
+    --cluster_temperature 0.0 \
+    --cluster_tries 15 \
+    --summary_temperature 0.0 \
+    --cluster_num_predict 6000 \
+    --use_constraints
+
+  echo "=== Running LLM+constraints+opt for K=$K ==="
+  python3 pgsummaryllm/src/main/python/llm/llm_grouping.py \
+    --schema schema.json \
+    --constraints JsonOutput/ldbc/v1/constraints.jsonl \
+    --k "$K" \
+    --out "results/llm_constraints_opt/k=${K}.json" \
+    --ollama_host http://localhost:11434 \
+    --ollama_model gemma2:2b \
+    --cluster_temperature 0.0 \
+    --cluster_tries 15 \
+    --summary_temperature 0.0 \
+    --cluster_num_predict 6000 \
+    --use_constraints \
+    --run_optimizer
+done

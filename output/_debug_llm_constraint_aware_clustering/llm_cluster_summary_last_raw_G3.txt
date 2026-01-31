@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntityLabel",
+  "cluster_name": "Community Discussions",
+  "cluster_explanation": "This cluster encompasses nodes related to discussions and interactions within communities, including comments, tags, forums, and organizations." 
+}

@@ -1,0 +1,9 @@
+{
+  "explanation": "The clusters are formed based on the general semantic roles of each label. 'Comment', 'Post' and 'Tag' relate to content creation and categorization, while 'Forum', 'Organisation' and 'Person' represent entities or groups involved in a broader context. Finally, 'Place' represents physical locations. This grouping allows for clear differentiation between these distinct categories.",
+  "clusters": [
+    {"id":"C1","labels":["Comment", "Post", "Tag"]},
+    {"id":"C2","labels":["Forum", "Organisation", "Person"]},
+    {"id":"C3","labels":["Place"]},
+    {"id":"C4","labels":["TagClass"] } 
+  ]
+}

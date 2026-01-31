@@ -1,0 +1,441 @@
+{
+  "nodes": {
+    "CommentType": {
+      "label": "Comment",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "creationDate",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "locationIP",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "browserUsed",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "length",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "ForumType": {
+      "label": "Forum",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "creationDate",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "OrganisationType": {
+      "label": "Organisation",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "PersonType": {
+      "label": "Person",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "creationDate",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "locationIP",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "browserUsed",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "firstName",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "lastName",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "gender",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "birthday",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "PlaceType": {
+      "label": "Place",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "PostType": {
+      "label": "Post",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "creationDate",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "locationIP",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "browserUsed",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "optional": true
+        },
+        {
+          "name": "length",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "language",
+          "type": "String",
+          "optional": true
+        },
+        {
+          "name": "imageFile",
+          "type": "String",
+          "optional": true
+        }
+      ]
+    },
+    "TagType": {
+      "label": "Tag",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "TagClassType": {
+      "label": "TagClass",
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "optional": false
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "edges": {
+    "CONTAINER_OF": {
+      "from": [
+        "Forum"
+      ],
+      "to": [
+        "Post"
+      ],
+      "properties": []
+    },
+    "HAS_CREATOR": {
+      "from": [
+        "Post",
+        "Comment"
+      ],
+      "to": [
+        "Person"
+      ],
+      "properties": []
+    },
+    "HAS_INTEREST": {
+      "from": [
+        "Person"
+      ],
+      "to": [
+        "Tag"
+      ],
+      "properties": []
+    },
+    "HAS_MEMBER": {
+      "from": [
+        "Forum"
+      ],
+      "to": [
+        "Person"
+      ],
+      "properties": [
+        {
+          "name": "joinDate",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "HAS_MODERATOR": {
+      "from": [
+        "Forum"
+      ],
+      "to": [
+        "Person"
+      ],
+      "properties": []
+    },
+    "HAS_TAG": {
+      "from": [
+        "Post",
+        "Forum"
+      ],
+      "to": [
+        "Tag"
+      ],
+      "properties": []
+    },
+    "HAS_TYPE": {
+      "from": [
+        "Tag"
+      ],
+      "to": [
+        "TagClass"
+      ],
+      "properties": []
+    },
+    "IS_LOCATED_IN": {
+      "from": [
+        "Organisation",
+        "Post",
+        "Person"
+      ],
+      "to": [
+        "Place"
+      ],
+      "properties": []
+    },
+    "IS_PART_OF": {
+      "from": [
+        "Place"
+      ],
+      "to": [
+        "Place"
+      ],
+      "properties": []
+    },
+    "IS_SUBCLASS_OF": {
+      "from": [
+        "TagClass"
+      ],
+      "to": [
+        "TagClass"
+      ],
+      "properties": []
+    },
+    "KNOWS": {
+      "from": [
+        "Person"
+      ],
+      "to": [
+        "Person"
+      ],
+      "properties": [
+        {
+          "name": "creationDate",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "LIKES": {
+      "from": [
+        "Person"
+      ],
+      "to": [
+        "Comment",
+        "Post"
+      ],
+      "properties": [
+        {
+          "name": "creationDate",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "REPLY_OF": {
+      "from": [
+        "Comment"
+      ],
+      "to": [
+        "Post",
+        "Comment"
+      ],
+      "properties": []
+    },
+    "STUDIES_AT": {
+      "from": [
+        "Person"
+      ],
+      "to": [
+        "Organisation"
+      ],
+      "properties": [
+        {
+          "name": "classYear",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    },
+    "WORKS_AT": {
+      "from": [
+        "Person"
+      ],
+      "to": [
+        "Organisation"
+      ],
+      "properties": [
+        {
+          "name": "workFrom",
+          "type": "String",
+          "optional": false
+        }
+      ]
+    }
+  },
+  "graph": {
+    "name": "LDBC",
+    "mode": "LOOSE",
+    "items": [
+      "CommentType",
+      "ForumType",
+      "OrganisationType",
+      "PersonType",
+      "PlaceType",
+      "PostType",
+      "TagType",
+      "TagClassType",
+      "CONTAINER_OF",
+      "HAS_CREATOR",
+      "HAS_INTEREST",
+      "HAS_MEMBER",
+      "HAS_MODERATOR",
+      "HAS_TAG",
+      "HAS_TYPE",
+      "IS_LOCATED_IN",
+      "IS_PART_OF",
+      "IS_SUBCLASS_OF",
+      "KNOWS",
+      "LIKES",
+      "REPLY_OF",
+      "STUDIES_AT",
+      "WORKS_AT"
+    ]
+  }
+}

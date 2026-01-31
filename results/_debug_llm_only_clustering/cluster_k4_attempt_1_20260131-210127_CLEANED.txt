@@ -1,0 +1,9 @@
+{
+  "explanation": "The provided GGD evidence suggests four distinct clusters based on the frequency and co-occurrence of schema labels. These clusters are determined by analyzing the relationships between labels in the GGDs, considering both LHS and RHS participation weights.",
+  "clusters": [
+    {"id":"G1","labels":["Comment", "Post", "Tag", "TagClass"]},
+    {"id":"G2","labels":["Forum", "Organisation", "Person"]},
+    {"id":"G3","labels":["Place", "Tag"]},
+    {"id":"G4","labels":["TagClass"] }
+  ]
+}

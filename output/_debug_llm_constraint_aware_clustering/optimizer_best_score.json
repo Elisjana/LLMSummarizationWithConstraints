@@ -1,0 +1,19 @@
+{
+  "full_local_per_cluster": [
+    19,
+    1,
+    1,
+    0
+  ],
+  "full_local_total": 21,
+  "full_local_min": 0,
+  "full_local_entropy": 0.3805062184745959,
+  "cross_rhs_missing": 164,
+  "sizes": [
+    3,
+    2,
+    2,
+    1
+  ],
+  "score": 46.76101243694919
+}

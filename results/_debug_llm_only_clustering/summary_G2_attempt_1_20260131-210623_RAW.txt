@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntity",
+  "cluster_name": "Community and Content Entities",
+  "cluster_explanation": "This cluster represents entities related to social interactions, such as people (Person), organizations (Organisation), places (Place), posts (Post), comments (Comment), and tags (Tag). These entities are connected through forums (Forum) and contribute to the creation of social content." 
+}

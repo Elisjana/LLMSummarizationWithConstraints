@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialEntity",
+  "cluster_name": "Community & Groups",
+  "cluster_explanation": "This cluster encompasses schemas representing communities and groups, such as forums and organizations." 
+}

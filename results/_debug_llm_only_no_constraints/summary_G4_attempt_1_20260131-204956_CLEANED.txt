@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialTags",
+  "cluster_name": "Social Tag Clusters",
+  "cluster_explanation": "This cluster represents groups of tags associated with social content, such as comments, posts, and forum discussions."
+}

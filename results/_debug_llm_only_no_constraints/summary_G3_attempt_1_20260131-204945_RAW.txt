@@ -1,0 +1,5 @@
+{
+  "unified_label": "LocationContent",
+  "cluster_name": "Places and Discussions",
+  "cluster_explanation": "This cluster encompasses schemas related to physical locations, such as places, organizations, and people's residences, along with discussions about them."
+}

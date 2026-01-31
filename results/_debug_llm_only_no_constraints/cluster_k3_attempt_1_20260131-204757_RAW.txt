@@ -1,0 +1,8 @@
+{
+  "explanation": "The clusters are formed based on the general semantic roles these labels represent. 'Comment' and 'Post' relate to content creation, while 'Forum' and 'Tag' connect to online discussion and categorization. 'Organisation', 'Person', and 'Place' belong to entities or locations in the real world.",
+  "clusters": [
+    {"id":"G1","labels":["Comment", "Post"]},
+    {"id":"G2","labels":["Forum", "Tag", "TagClass"]},
+    {"id":"G3","labels":["Organisation", "Person", "Place"]}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialContent",
+  "cluster_name": "Community Discussion",
+  "cluster_explanation": "This cluster encompasses schema nodes related to social interactions and discussions, such as comments, forums, and posts." 
+}

@@ -1,0 +1,23 @@
+{
+  "explanation": "The provided JSON contains duplicate labels assigned to multiple clusters. Please ensure that each label is used only once per cluster.",
+  "clusters": [
+    {
+      "id": "G1",
+      "labels": [
+        "Tag",
+        "TagClass"
+      ]
+    },
+    {
+      "id": "G2",
+      "labels": [
+        "Comment",
+        "Forum",
+        "Organisation",
+        "Person",
+        "Place",
+        "Post"
+      ]
+    }
+  ]
+}

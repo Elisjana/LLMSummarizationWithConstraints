@@ -1,0 +1,5 @@
+{
+  "unified_label": "ContentTag",
+  "cluster_name": "Tags Related to Content",
+  "cluster_explanation": "This cluster represents labels associated with content, such as tags and comments, that are relevant for understanding the nature of the information." 
+}

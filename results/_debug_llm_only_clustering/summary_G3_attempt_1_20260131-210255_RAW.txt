@@ -1,0 +1,5 @@
+{
+  "unified_label": "LocationContent",
+  "cluster_name": "Places and Their Content",
+  "cluster_explanation": "This cluster represents locations where content is created, shared, or discussed. It includes places like forums, organizations, and posts that are associated with physical spaces." 
+}

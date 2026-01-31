@@ -1,0 +1,5 @@
+{
+  "unified_label": "SocialTags",
+  "cluster_name": "Community Tag Groups",
+  "cluster_explanation": "This cluster represents groups of tags and tag classes used to categorize social content." 
+}

@@ -1,0 +1,6 @@
+{
+  "explanation": "The provided GGD evidence suggests three distinct clusters based on the frequency of schema labels. These clusters are formed by grouping labels that frequently co-occur in GGDs (closure=LHS∪RHS).",
+  "clusters": [
+    {"id":"G1","labels":["Comment", "Post", "Tag", "Forum", "Organisation", "Person", "Place"]},
+    {"id":"G2","labels":["TagClass"]},
+    {"id":"G3","labels":["Tag"]},

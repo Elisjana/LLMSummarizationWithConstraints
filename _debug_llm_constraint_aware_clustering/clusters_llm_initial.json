@@ -1,0 +1,14 @@
+[
+  [
+    "Tag",
+    "TagClass"
+  ],
+  [
+    "Comment",
+    "Forum",
+    "Organisation",
+    "Person",
+    "Place",
+    "Post"
+  ]
+]

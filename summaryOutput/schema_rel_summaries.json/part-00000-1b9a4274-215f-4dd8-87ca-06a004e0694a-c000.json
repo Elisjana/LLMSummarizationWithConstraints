@@ -1,0 +1,1 @@
+{"relLabel":"REPLY_OF","fromLabel":"Comment","toLabel":"Post","properties":[],"constraint_tags":["GGD(GGD_0097)","GGD(GGD_0197)"],"schema_summary":"RelType REPLY_OF: Comment -> Post. Properties: (none). Used in constraints: GGD(GGD_0097), GGD(GGD_0197)"}
