@@ -1,7 +1,0 @@
-{
-  "explanation": "The provided GGD evidence suggests two distinct clusters based on the frequency of schema labels. The clustering process leverages this information to create two disjoint clusters, ensuring that each label is present in only one cluster.",
-  "clusters": [
-    {"id":"G1","labels":["Comment", "Forum", "Organisation", "Person", "Place", "Post", "Tag", "TagClass"]},
-    {"id":"G2","labels":["Tag"] }
-  ]
-}

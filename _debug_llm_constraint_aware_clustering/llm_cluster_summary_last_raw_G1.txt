@@ -1,5 +1,0 @@
-{
-  "unified_label": "SocialContent",
-  "cluster_name": "Social Entities and Content",
-  "cluster_explanation": "This cluster encompasses entities related to social interactions, including people, organizations, places, posts, and tags. It represents the core components of online social content." 
-}

@@ -1,5 +1,0 @@
-{
-  "unified_label": "SocialContentCluster",
-  "cluster_name": "Community Content and Interactions",
-  "cluster_explanation": "This cluster represents content related to social interactions, including comments, forum discussions, posts, tags, and organizations. It captures the essence of online communities where people share information and engage with each other." 
-}
